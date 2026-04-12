@@ -1,0 +1,362 @@
+/**
+ * Styles principaux du projet.
+ * Le but est d'offrir une base propre pour brancher les vraies visualisations D3 plus tard.
+ */
+
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --panel-alt: #1f2937;
+  --border: #334155;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-contrast: #082f49;
+  --danger: #fecaca;
+  --danger-bg: #7f1d1d;
+  --success-bg: #052e16;
+  --success: #bbf7d0;
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #020617 0%, var(--bg) 100%);
+  color: var(--text);
+}
+
+#app {
+  width: min(1400px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+}
+
+.page-header,
+.panel,
+.status-bar,
+.navigation {
+  margin-bottom: 20px;
+}
+
+.page-header,
+.panel,
+.status-bar {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(17, 24, 39, 0.92);
+  box-shadow: var(--shadow);
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-bottom: 6px;
+}
+
+.page-subtitle,
+.section-description,
+.todo-note,
+.muted-text {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.page-subtitle {
+  margin: 12px 0 0;
+  max-width: 78ch;
+}
+
+.status-bar {
+  padding: 14px 18px;
+  background: rgba(5, 46, 22, 0.55);
+  color: var(--success);
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.panel {
+  padding: 20px;
+}
+
+.page-content {
+  display: grid;
+  gap: 20px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.section-actions,
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.button {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: var(--panel-alt);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.button:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+  border-color: transparent;
+  font-weight: 700;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.filter-card {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.filter-card label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.filter-card select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #0b1220;
+  color: var(--text);
+}
+
+.viz-root {
+  min-height: 240px;
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.viz-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.placeholder-card {
+  display: grid;
+  gap: 14px;
+}
+
+.metrics-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.metric-card {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(17, 24, 39, 0.75);
+}
+
+.metric-label {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.metric-value {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.legend-list,
+.definition-list {
+  display: grid;
+  gap: 10px;
+}
+
+.definition-list {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.definition-item {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.definition-item dt {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.definition-item dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  flex: 0 0 14px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.debug-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.debug-table th,
+.debug-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.debug-table th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.loading-overlay {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(56, 189, 248, 0.25);
+  border-top-color: var(--primary);
+  border-radius: 999px;
+  animation: spin 0.8s linear infinite;
+}
+
+.error-banner {
+  margin-bottom: 20px;
+  padding: 16px 18px;
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  border-radius: 16px;
+  color: var(--danger);
+  background: rgba(127, 29, 29, 0.75);
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  max-width: 280px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.95);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .page-header,
+  .section-header {
+    flex-direction: column;
+  }
+
+  #app {
+    width: min(100%, calc(100% - 20px));
+  }
+}

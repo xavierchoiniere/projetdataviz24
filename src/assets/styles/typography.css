@@ -1,0 +1,18 @@
+/**
+ * Base typographique du projet.
+ */
+
+:root {
+  --font-sans: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>INF8808 — Inclusion mondiale aux Jeux Olympiques</title>
+
+    <!--
+      Import map :
+      - permet d'utiliser `import * as d3 from "d3"` dans tous les modules ES
+      - aucun bundler n'est nécessaire
+      - le site reste 100 % statique
+    -->
+    <script type="importmap">
+      {
+        "imports": {
+          "d3": "https://cdn.jsdelivr.net/npm/d3@7/+esm"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="./assets/styles/typography.css" />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="page-header">
+        <div>
+          <p class="eyebrow">INF8808 · Polytechnique Montréal</p>
+          <h1>Inclusion mondiale aux Jeux Olympiques (1896–2024)</h1>
+          <p class="page-subtitle">
+            Prétraitement côté navigateur, architecture modulaire D3.js et exports CSV par visualisation.
+          </p>
+        </div>
+      </header>
+
+      <div id="status-bar" class="status-bar" aria-live="polite">
+        Initialisation de l'application…
+      </div>
+
+      <div id="loading-overlay" class="loading-overlay" aria-live="polite">
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Chargement des fichiers CSV et prétraitement en cours…</p>
+      </div>
+
+      <div id="error-banner" class="error-banner hidden" role="alert"></div>
+
+      <nav id="navigation-root" class="navigation"></nav>
+
+      <section id="filters-section" class="panel">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">Contrôles</p>
+            <h2>Filtres globaux</h2>
+          </div>
+        </div>
+        <div id="filters-root"></div>
+      </section>
+
+      <main class="page-content">
+        <section
+          id="viz1-section"
+          class="panel"
+          data-nav-title="Viz 1"
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Visualisation 1</p>
+              <h2>Médailles dédoublonnées</h2>
+              <p class="section-description">
+                Gabarit fonctionnel pour une vue centrée sur les médailles, le genre d'épreuve et les continents.
+              </p>
+            </div>
+            <div class="section-actions">
+              <button id="export-viz1" class="button" type="button">
+                Exporter CSV Viz 1
+              </button>
+            </div>
+          </div>
+          <div id="viz1-root" class="viz-root"></div>
+        </section>
+
+        <section
+          id="viz2-section"
+          class="panel"
+          data-nav-title="Viz 2"
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Visualisation 2</p>
+              <h2>Âge des médaillés</h2>
+              <p class="section-description">
+                Gabarit fonctionnel pour une vue âge / discipline / médaille basée sur <code>birth_year</code>.
+              </p>
+            </div>
+            <div class="section-actions">
+              <button id="export-viz2" class="button" type="button">
+                Exporter CSV Viz 2
+              </button>
+            </div>
+          </div>
+          <div id="viz2-root" class="viz-root"></div>
+        </section>
+
+        <section
+          id="viz3-section"
+          class="panel"
+          data-nav-title="Viz 3"
+        >
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Visualisation 3</p>
+              <h2>Participation vs médailles</h2>
+              <p class="section-description">
+                Gabarit fonctionnel pour une vue croisée <code>nb_athletes</code> ↔ médailles, avec sorties line + bubble.
+              </p>
+            </div>
+            <div class="section-actions">
+              <button id="export-viz3" class="button" type="button">
+                Exporter CSV Viz 3
+              </button>
+            </div>
+          </div>
+
+          <div class="viz-grid">
+            <div id="viz3-line-root" class="viz-root"></div>
+            <div id="viz3-bubble-root" class="viz-root"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

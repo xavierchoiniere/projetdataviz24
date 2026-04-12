@@ -1,0 +1,17 @@
+{
+  "name": "inf8808-olympics-inclusion",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "serve src -l 3000",
+    "lint": "eslint \"src/**/*.js\""
+  },
+  "dependencies": {
+    "d3": "^7.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.25.1",
+    "serve": "^14.2.4"
+  }
+}
