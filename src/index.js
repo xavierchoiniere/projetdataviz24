@@ -138,7 +138,7 @@ function bindExportButtons() {
   });
 
   document.getElementById('export-viz2')?.addEventListener('click', () => {
-    exportViz2Csv(appState.currentVizData.viz2);
+    exportViz2Csv(appState.currentVizData.viz2 ?? { chartData: [] });
   });
 
   document.getElementById('export-viz3')?.addEventListener('click', () => {
@@ -168,7 +168,7 @@ function buildStatusMessage(filters) {
     `saison : ${safeTrim(filters.saison) || 'all'}`,
     `continent : ${safeTrim(filters.continent) || 'all'}`,
     `| Viz1 : ${appState.currentVizData.viz1.length} lignes`,
-    `Viz2 : ${appState.currentVizData.viz2.length} lignes`,
+    `Viz2 : ${(appState.currentVizData.viz2?.chartData ?? []).length} années`,
     `Viz3 bubble : ${appState.currentVizData.viz3.bubbleData.length} lignes`
   ];
 

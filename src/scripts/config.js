@@ -361,10 +361,10 @@ export const MEDAL_COLORS = Object.freeze({
 });
 
 export const GENDER_COLORS = Object.freeze({
-  Men: '#4C78A8',
-  Women: '#E45756',
-  Mixed: '#72B7B2',
-  Open: '#B279A2'
+  Men: '#2563eb',
+  Women: '#f43f5e',
+  Mixed: '#10b981',
+  Open: '#b07aa1'
 });
 
 export const CONTINENT_COLORS = Object.freeze({

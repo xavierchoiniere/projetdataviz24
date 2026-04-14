@@ -255,6 +255,16 @@ export function formatInteger(value) {
 }
 
 /**
+ * Formate une année sans séparateur de milliers.
+ * @param {number|null|undefined} value
+ * @returns {string}
+ */
+export function formatYear(value) {
+  const normalized = Number(value ?? 0);
+  return String(Math.round(normalized));
+}
+
+/**
  * Formate un nombre décimal.
  * @param {number|null|undefined} value
  * @param {number} [maximumFractionDigits]

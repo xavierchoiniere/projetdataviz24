@@ -1,31 +1,47 @@
 /**
  * Légende de la visualisation 2.
  *
- * TODO :
- * - ajuster la structure de la légende selon la visualisation finale
+ * Affiche les couleurs correspondant aux catégories de genre :
+ * - Masculine (bleu)
+ * - Féminine (rose)
+ * - Mixte (vert)
  */
 
-import { MEDAL_COLORS } from '../config.js';
+import { GENDER_COLORS } from '../config.js';
 import { createDomNode, resolveNode } from '../helper.js';
 
+const GENDER_LABELS = {
+  Men: 'Masculines',
+  Women: 'Féminines',
+  Mixed: 'Mixtes'
+};
+
 /**
- * Rend la légende de base.
+ * Rend la légende des genres pour la visualisation 2.
  * @param {{ container: string|HTMLElement }} payload
  */
 export function renderViz2Legend({ container }) {
   const host = resolveNode(container);
-  const title = createDomNode('h3', '', 'Légende de base');
+
+  const legendBox = createDomNode('div', 'viz2-legend-box');
+
+  const title = createDomNode('h4', 'legend-title', 'Légende');
+  legendBox.appendChild(title);
+
   const list = createDomNode('div', 'legend-list');
 
-  for (const [label, color] of Object.entries(MEDAL_COLORS)) {
+  for (const [key, color] of Object.entries(GENDER_COLORS)) {
+    if (key === 'Open') continue;
+
     const row = createDomNode('div', 'legend-row');
     const swatch = createDomNode('span', 'legend-swatch');
-    const text = createDomNode('span', '', label);
+    const text = createDomNode('span', 'legend-text', GENDER_LABELS[key] || key);
 
     swatch.style.backgroundColor = color;
     row.append(swatch, text);
     list.append(row);
   }
 
-  host.append(title, list);
+  legendBox.appendChild(list);
+  host.appendChild(legendBox);
 }
