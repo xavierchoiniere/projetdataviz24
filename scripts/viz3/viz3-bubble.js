@@ -216,7 +216,7 @@ function drawBubbleChart(container, data, allYears, state, tooltip) {
     .attr('text-anchor', 'middle')
     .attr('fill', '#64748b')
     .style('font-size', '11px')
-    .text('Médailles');
+    .text('Nombre de médailles');
 
   drawTimeline(g, allYears, state, CHART_H + 52, () => {
     const newYearData = data.filter((d) => Number(d.year) === state.year);

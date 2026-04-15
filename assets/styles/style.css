@@ -548,13 +548,6 @@ h3 {
   stroke-linecap: round;
 }
 
-.viz2-svg .viz2-chart-title {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 16px;
-  fill: var(--text);
-}
-
 /* Filter Panel */
 .viz2-filter-panel {
   width: 280px;
@@ -964,13 +957,6 @@ h3 {
   gap: 4px;
 }
 
-.viz1-chart-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text);
-  margin: 0;
-}
-
 .viz1-season-toggle {
   display: flex;
   align-items: center;
@@ -1099,38 +1085,43 @@ h3 {
 .viz1-mode-bar {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-top: 20px;
-  border-top: 1px solid var(--border);
-  padding-top: 4px;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 6px;
+  background: var(--panel-alt, #f1f5f9);
+  border-radius: 12px;
 }
 
 .viz1-mode-btn {
   flex: 1;
-  padding: 16px 20px;
+  padding: 12px 20px;
   background: transparent;
   border: none;
-  border-bottom: 3px solid transparent;
-  color: var(--muted);
-  font-size: 0.8rem;
+  color: var(--muted, #64748b);
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.15s ease;
+  border-radius: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
 }
 
-.viz1-mode-btn:hover {
-  color: var(--text-secondary);
-  background: var(--panel-alt);
+.viz1-mode-btn:hover:not(.active) {
+  color: var(--text-secondary, #334155);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .viz1-mode-btn.active {
-  color: var(--text);
-  background: var(--text);
   color: #ffffff;
-  border-radius: 10px;
-  border-bottom-color: transparent;
+  background: var(--text, #0f172a);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+}
+
+.viz1-mode-btn:focus-visible {
+  outline: 2px solid var(--text, #0f172a);
+  outline-offset: 2px;
 }
 
 .viz1-no-data {
@@ -1312,11 +1303,12 @@ h3 {
   padding: 8px;
 }
 
-.viz3-chart-title {
-  font-family: var(--font-display);
+.viz1-chart-title,
+.viz3-chart-title,
+.viz2-chart-title {
+  font-family: var(--font-display), sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  fill: var(--text);
+  font-size: 1.1rem; 
 }
 
 .viz3-line-svg,

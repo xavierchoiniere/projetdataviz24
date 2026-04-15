@@ -208,7 +208,7 @@ function drawLineChart(container, data, state, tooltip) {
     .attr('text-anchor', 'middle')
     .attr('fill', '#64748b')
     .style('font-size', '11px')
-    .text('Épreuves / Disciplines / Pays');
+    .text('Nombre d\'Épreuves / Disciplines / Pays');
 
   const hoverLine = g.append('line')
     .attr('class', 'viz3-hover-line')

@@ -6,7 +6,7 @@
  */
 
 import * as d3 from 'd3';
-import { GENDER_COLORS } from '../config.js';
+import { GENDER_COLORS, SVG_DIMENSIONS } from '../config.js';
 import { renderViz2Legend } from './viz2-legend.js';
 import { createViz2Tooltip, showTooltip, hideTooltip } from './viz2-tooltip.js';
 import { getMilestonesForYear } from './preprocess-viz2.js';
@@ -14,13 +14,12 @@ import {
   clearNode,
   createDomNode,
   formatInteger,
-  formatYear,
-  resolveNode
+  formatYear
 } from '../helper.js';
 
 const MARGIN = { top: 90, right: 320, bottom: 60, left: 100 };
-const WIDTH = 900;
-const HEIGHT = 900;
+const WIDTH = SVG_DIMENSIONS.viz2.width;
+const HEIGHT = SVG_DIMENSIONS.viz2.height;
 
 const SEASON_DISCIPLINES = {
   summer: new Set(['Athletics', 'Swimming', 'Gymnastics', 'Boxing', 'Wrestling', 'Basketball', 'Football', 'Tennis',
@@ -337,17 +336,17 @@ function createFilterPanel(allDisciplines, winterDisciplines, summerDisciplines,
   const winterCheck = createDomNode('label', 'checkbox-label');
   const winterCheckbox = createDomNode('input');
   winterCheckbox.type = 'checkbox';
-  winterCheckbox.className = 'season-checkbox';
   winterCheckbox.dataset.season = 'winter';
-  winterCheck.append(winterCheckbox, ' Disciplines d\'hiver');
 
+  winterCheck.append(winterCheckbox, createDomNode('span', '', " Disciplines d'hiver"));
+  
   const summerCheck = createDomNode('label', 'checkbox-label');
   const summerCheckbox = createDomNode('input');
   summerCheckbox.type = 'checkbox';
-  summerCheckbox.className = 'season-checkbox';
   summerCheckbox.dataset.season = 'summer';
-  summerCheck.append(summerCheckbox, ' Disciplines d\'été');
 
+  summerCheck.append(summerCheckbox, createDomNode('span', '', " Disciplines d'été"));
+  
   seasonChecks.append(winterCheck, summerCheck);
   panel.appendChild(seasonChecks);
 
@@ -449,12 +448,14 @@ function createFilterPanel(allDisciplines, winterDisciplines, summerDisciplines,
     }
   });
 
-  winterCheckbox.addEventListener('change', () => {
+  winterCheckbox.addEventListener('change', (e) => {
+    e.stopPropagation();
     updateSeasonFilter();
     updateSuggestions(searchInput.value.trim());
   });
 
-  summerCheckbox.addEventListener('change', () => {
+  summerCheckbox.addEventListener('change', (e) => {
+    e.stopPropagation();
     updateSeasonFilter();
     updateSuggestions(searchInput.value.trim());
   });

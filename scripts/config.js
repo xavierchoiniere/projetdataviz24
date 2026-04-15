@@ -384,13 +384,13 @@ export const SEASON_COLORS = Object.freeze({
 
 export const SVG_DIMENSIONS = Object.freeze({
   viz1: {
-    width: 1180,
-    height: 640,
+    width: 900,
+    height: 500,
     margin: { top: 64, right: 32, bottom: 64, left: 72 }
   },
   viz2: {
-    width: 1180,
-    height: 640,
+    width: 800,
+    height: 900,
     margin: { top: 64, right: 32, bottom: 64, left: 72 }
   },
   viz3Line: {

@@ -76,15 +76,8 @@ export function renderViz1({ containerSelector = '#viz1-root', data = {} } = {})
 
 function buildHeader(state, onSaisonChange) {
   const header = createDomNode('div', 'viz1-header');
-
-  const titleGroup = createDomNode('div', 'viz1-title-group');
-  titleGroup.append(
-    createDomNode('p', 'section-kicker', 'Ratio de performance historique (%)'),
-    createDomNode('h2', 'viz1-chart-title', 'Part cumulative des médailles')
-  );
-
   const toggle = createDomNode('div', 'viz1-season-toggle');
-  const SAISON_LABELS = { summer: 'ÉTÉ', winter: 'HIVER' };
+  const SAISON_LABELS = { summer: 'Été', winter: 'Hiver' };
   for (const saison of ['summer', 'winter']) {
     const btn = createDomNode(
       'button',
@@ -96,7 +89,7 @@ function buildHeader(state, onSaisonChange) {
     toggle.append(btn);
   }
 
-  header.append(titleGroup, toggle);
+  header.append(toggle);
   return header;
 }
 
@@ -104,8 +97,8 @@ function buildModeBar(state, onModeChange) {
   const bar = createDomNode('div', 'viz1-mode-bar');
 
   const modes = [
-    { mode: VIZ1_MODES.PERFORMANCE, label: '∿  PERFORMANCE' },
-    { mode: VIZ1_MODES.DIVERSITY, label: '⊕  DIVERSITÉ DES MÉDAILLES' }
+    { mode: VIZ1_MODES.PERFORMANCE, label: 'NATIONS DOMINANTES' },
+    { mode: VIZ1_MODES.DIVERSITY, label: 'GLOBALISATION DES JEUX' }
   ];
 
   for (const { mode, label } of modes) {
@@ -155,6 +148,13 @@ function drawPerformanceChart(container, performanceData, saison, tooltip) {
     .nice();
 
   const { svg, g } = buildSvg(container);
+
+  g.append('text')
+    .attr('class', 'viz1-chart-title')
+    .attr('x', INNER_W / 2)
+    .attr('y', -MARGIN.top / 2)
+    .attr('text-anchor', 'middle')
+    .text('Part des médailles par nation (%)');
 
   drawGrid(g, yScale, INNER_W);
 
@@ -259,6 +259,13 @@ function drawDiversityChart(container, diversityData, saison, tooltip) {
     .nice();
 
   const { svg, g } = buildSvg(container);
+
+  g.append('text')
+    .attr('class', 'viz1-chart-title')
+    .attr('x', INNER_W / 2)
+    .attr('y', -MARGIN.top / 2)
+    .attr('text-anchor', 'middle')
+    .text('Évolution du nombre de pays médaillés');
 
   drawGrid(g, yScale, INNER_W);
 
