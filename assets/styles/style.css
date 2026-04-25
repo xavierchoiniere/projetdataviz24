@@ -138,9 +138,13 @@ h3 {
 }
 
 .section-description {
+  margin: 0;
   font-size: 0.95rem;
-  max-width: 65ch;
+  max-width: 100%;
+  width: 100%;
   color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: justify;
 }
 
 .page-subtitle {
@@ -173,14 +177,9 @@ h3 {
   gap: 20px;
 }
 
-.section-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--border);
+.section-header > div:first-child {
+  flex: 1;
+  min-width: 0;
 }
 
 .section-actions,
@@ -188,6 +187,18 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.section-actions .button {
+  white-space: nowrap;
 }
 
 .button {
@@ -1596,5 +1607,156 @@ h3 {
 
   .viz3-bubble-legend {
     align-self: flex-start;
+  }
+}
+
+/* Descriptions des visualisations + bouton export aligné */
+.page-content .section-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.page-content .section-header > div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-content .section-actions {
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+
+.page-content .section-actions .button {
+  white-space: nowrap;
+}
+
+.section-description {
+  margin: 0;
+  font-size: 0.95rem;
+  max-width: 100%;
+  width: 100%;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ================================
+   Visualisation 3 - Recherche pays bubble chart
+   ================================ */
+
+.viz3-country-search {
+  position: relative;
+  width: 280px;
+  max-width: 100%;
+}
+
+.viz3-country-search-input-wrapper {
+  position: relative;
+}
+
+.viz3-country-search-input {
+  width: 100%;
+  padding: 10px 64px 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-alt);
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 450;
+  transition: all 0.15s ease;
+}
+
+.viz3-country-search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--panel);
+  box-shadow: 0 0 0 3px var(--primary-subtle);
+}
+
+.viz3-country-search-input::placeholder {
+  color: var(--muted);
+}
+
+.viz3-country-search-icon {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.viz3-country-search-clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.viz3-country-search-clear:hover {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+.viz3-country-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  z-index: 100;
+  margin-top: 6px;
+  box-shadow: var(--shadow-lg);
+}
+
+.viz3-country-suggestion-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 450;
+  color: var(--text-secondary);
+  transition: all 0.1s ease;
+  border-bottom: 1px solid var(--border);
+}
+
+.viz3-country-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.viz3-country-suggestion-item:hover {
+  background: var(--primary-subtle);
+  color: var(--text);
+}
+
+/* Ajustement du bloc de contrôles du bubble chart */
+.viz3-bubble-wrapper .viz3-line-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Responsive : le champ prend toute la largeur disponible */
+@media (max-width: 900px) {
+  .viz3-country-search {
+    width: 100%;
   }
 }
