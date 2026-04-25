@@ -8,6 +8,8 @@ L’application est construite comme un **site web statique** en **HTML / CSS / 
 Le prétraitement des données est exécuté **entièrement dans le navigateur** à partir de **8 fichiers CSV bruts** provenant de jeux de données Kaggle.  
 Aucun fichier de données pré-nettoyé n’est requis.
 
+**Vidéo explicative des visualisations:** https://youtu.be/HJZDmcgEqNw
+
 ## Objectif du projet
 
 Le projet repose sur trois visualisations principales :
